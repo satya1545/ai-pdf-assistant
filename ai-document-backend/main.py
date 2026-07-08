@@ -16,6 +16,8 @@ from models.document import Document
 
 from routers.document import router as document_router
 
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI(
     title="AI Backend API"
@@ -32,6 +34,16 @@ app.include_router(upload_router)
 app.include_router(chat_router)
 
 app.include_router(document_router)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def home():
