@@ -5,7 +5,7 @@ import os
 
 load_dotenv()
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = os.getenv("postgresql://ai_pdf_assistant_90nk_user:AjDJiGup4EpDEOqRAiOeKolHPkYpOlRK@dpg-d97shn67r5hc73dbs1gg-a.virginia-postgres.render.com/ai_pdf_assistant_90nk")
 
 engine = create_engine(DATABASE_URL)
 
