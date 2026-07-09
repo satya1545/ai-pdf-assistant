@@ -1,8 +1,7 @@
 import chromadb
+import uuid
 
-client = chromadb.PersistentClient(
-    path="chroma_db"
-)
+client = chromadb.PersistentClient(path="chroma_db")
 
 collection = client.get_or_create_collection(
     name="documents"
@@ -11,13 +10,19 @@ collection = client.get_or_create_collection(
 
 def store_embeddings(chunks, embeddings):
 
-    ids = [str(i) for i in range(len(chunks))]
+    print("Chunks:", len(chunks))
+    print("Embeddings:", len(embeddings))
+
+    ids = [str(uuid.uuid4()) for _ in range(len(chunks))]
+
+    print("IDs:", len(ids))
 
     collection.add(
+        ids=ids,
         documents=chunks,
-        embeddings=embeddings.tolist(),
-        ids=ids
+        embeddings=embeddings.tolist()
     )
 
+    print("Total vectors:", collection.count())
+
     return collection.count()
-print("Total vectors:", collection.count())

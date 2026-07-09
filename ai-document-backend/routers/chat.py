@@ -14,7 +14,16 @@ def chat(question: str):
 
     results = search_documents(question)
 
+    print("=" * 80)
+    print(results)
+    print("=" * 80)
+
     documents = results["documents"][0]
+
+    print("Retrieved Chunks:")
+    for i, doc in enumerate(documents):
+        print(f"\nChunk {i+1}:")
+        print(doc[:300])
 
     context = "\n\n".join(documents)
 

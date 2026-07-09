@@ -1,25 +1,24 @@
-# Virtual Environment
-venv/
-.venv/
-
 # Python
-__pycache__/
-*.py[cod]
-*.pyo
+**/venv/
+**/__pycache__/
+**/*.pyc
 
-# Environment Variables
-.env
+# Environment
+**/.env
 
-# Uploads
-uploads/
+# Node
+**/node_modules/
+**/dist/
 
 # ChromaDB
-chroma_db/
+**/chroma_db/
+
+# Uploaded PDFs
+**/uploads/
 
 # IDE
 .vscode/
-.idea/
 
-# OS Files
+# OS
 .DS_Store
 Thumbs.db
